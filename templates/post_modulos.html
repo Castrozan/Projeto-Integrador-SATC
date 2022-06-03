@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ post_modulo['modelo'] }} {% endblock %}</h2>
+    <p>{{ post_modulo['quantidade'] }}</p>
+    <p>{{ post_modulo['potencia'] }}</p>
+{% endblock %}
