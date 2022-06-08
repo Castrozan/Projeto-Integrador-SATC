@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ post_inversor['modelo'] }} {% endblock %}</h2>
+    <p>{{ post_inversor['quantidade'] }}</p>
+    <p>{{ post_inversor['potencia'] }}</p>
+{% endblock %}

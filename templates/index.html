@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    <h1>{% block title %} Bem Vindo ao PIWEB!! {% endblock %}</h1>
+    <h6>Edite o modulo, inversor desejado e o consumo da edifição</h6>
     
     {% for post in posts_modulos %}
         <a href="{{ url_for('post_modulo') }}">
-            <h2>{{ post['modelo'] }}</h2>
+            <h2>Móduto atual: {{ post['modelo'] }}</h2>
         </a>
-        <span class="badge badge-primary">{{ post['quantidade'] }}</span>
-        <span class="badge badge-primary">{{ post['potencia'] }}</span>
+        <span class="badge badge-primary">Quantidade: {{ post['quantidade'] }}</span>
+        <span class="badge badge-primary">Potência: {{ post['potencia'] }}</span>
         <a href="{{ url_for('edit_modulos') }}">
             <span class="badge badge-warning">Edit</span>
         </a>
     {% endfor %}
 
     {% for post in posts_inversores %}
-        <a href="#">
-            <h2>{{ post['modelo'] }}</h2>
+        <a href="{{ url_for('post_inversor') }}">
+            <h2>Inversor atual: {{ post['modelo'] }}</h2>
         </a>
-        <span class="badge badge-primary">{{ post['quantidade'] }}</span>
-        <span class="badge badge-primary">{{ post['potencia'] }}</span>
-        <a href="#">
+        <span class="badge badge-primary">Quantidade: {{ post['quantidade'] }}</span>
+        <span class="badge badge-primary">Potência: {{ post['potencia'] }}</span>
+        <a href="{{ url_for('edit_inversores') }}">
             <span class="badge badge-warning">Edit</span>
         </a>
     {% endfor %}
 
     {% for post in consumo %}
-        <a href="#">
-            <h2>{{ post['escola'] }}</h2>
+        <a href="{{ url_for('post_consumo') }}">
+            <h2>Escola atual: {{ post['escola'] }}</h2>
         </a>
+        <h10>Consumo anual: </h10>
         <span class="badge badge-primary">{{ post['janeiro'] }}</span>
         <span class="badge badge-primary">{{ post['fevereiro'] }}</span>
         <span class="badge badge-primary">{{ post['marco'] }}</span>
@@ -41,12 +43,12 @@
         <span class="badge badge-primary">{{ post['outubro'] }}</span>
         <span class="badge badge-primary">{{ post['novembro'] }}</span>
         <span class="badge badge-primary">{{ post['dezembro'] }}</span>
-        <a href="#">
+        <a href="{{ url_for('edit_consumo') }}">
             <span class="badge badge-warning">Edit</span>
         </a>
     {% endfor %}
     
-    {% for post in posts %}
+    <!--{% for post in posts %}
         <a href="{{ url_for('post', post_id=post['id']) }}">
             <h2>{{ post['title'] }}</h2>
         </a>
@@ -54,6 +56,10 @@
         <a href="{{ url_for('edit', id=post['id']) }}">
             <span class="badge badge-warning">Edit</span>
         </a>
-    {% endfor %}
-
+    {% endfor %}-->
+    <a href="{{ url_for('gera_relatorio') }}">
+        <h1></h1>
+        <h1></h1>
+        <h1>Gerar relatório</h1>
+    </a>
 {% endblock %}

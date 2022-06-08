@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Módulo "{{ post_consumo['escola'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Escola</label>
+        <input type="text" name="escola" placeholder="escola"
+               class="form-control"
+               value="{{ request.form['escola'] or post_consumo['escola'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Janeiro</label>
+        <input type="text" name="janeiro" placeholder="Janeiro"
+               class="form-control"
+               value="{{ request.form['janeiro'] or post_consumo['janeiro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Fevereiro</label>
+        <input type="text" name="fevereiro" placeholder="Fevereiro"
+               class="form-control"
+               value="{{ request.form['fevereiro'] or post_consumo['fevereiro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Março</label>
+        <input type="text" name="marco" placeholder="Março"
+               class="form-control"
+               value="{{ request.form['marco'] or post_consumo['marco'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Abril</label>
+        <input type="text" name="abril" placeholder="Abril"
+               class="form-control"
+               value="{{ request.form['abril'] or post_consumo['abril'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Maio</label>
+        <input type="text" name="maio" placeholder="Maio"
+               class="form-control"
+               value="{{ request.form['maio'] or post_consumo['maio'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Junho</label>
+        <input type="text" name="junho" placeholder="Junho"
+               class="form-control"
+               value="{{ request.form['junho'] or post_consumo['junho'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Julho</label>
+        <input type="text" name="julho" placeholder="Julho"
+               class="form-control"
+               value="{{ request.form['julho'] or post_consumo['julho'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Agosto</label>
+        <input type="text" name="agosto" placeholder="Agosto"
+               class="form-control"
+               value="{{ request.form['agosto'] or post_consumo['agosto'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Setembro</label>
+        <input type="text" name="setembro" placeholder="Setembro"
+               class="form-control"
+               value="{{ request.form['setembro'] or post_consumo['setembro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Outubro</label>
+        <input type="text" name="outubro" placeholder="Outubro"
+               class="form-control"
+               value="{{ request.form['outubro'] or post_consumo['outubro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Novembro</label>
+        <input type="text" name="novembro" placeholder="Novembro"
+               class="form-control"
+               value="{{ request.form['novembro'] or post_consumo['novembro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <label for="title">Dezembro</label>
+        <input type="text" name="dezembro" placeholder="Dezembro"
+               class="form-control"
+               value="{{ request.form['dezembro'] or post_consumo['dezembro'] }}">
+        </input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Alterar</button>
+    </div>
+</form>
+<hr>
+{% endblock %}

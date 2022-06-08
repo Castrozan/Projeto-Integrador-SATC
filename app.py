@@ -19,6 +19,28 @@ def get_post_modulos(post_id_modulos):
         abort(404)
     return post_modulos
 
+#Atualmente não utilizada
+#Função para pegar o ID dos inversores
+def get_post_inversores(post_id_inversores):
+    conn = get_db_connection()
+    post_inversores = conn.execute('SELECT * FROM inversores WHERE id_inversores = ?',
+                        (post_id_inversores,)).fetchone()
+    conn.close()
+    if post_inversores is None:
+        abort(404)
+    return post_inversores
+
+#Atualmente não utilizada
+#Função para pegar o ID do consumo
+def get_post_consumo(post_id_consumo):
+    conn = get_db_connection()
+    post_consumo = conn.execute('SELECT * FROM consumo_anual WHERE id_consumo_anual = ?',
+                        (post_id_consumo,)).fetchone()
+    conn.close()
+    if post_consumo is None:
+        abort(404)
+    return post_consumo
+
 #Função padrão para pegar o ID das postagens
 def get_post(post_id):
     conn = get_db_connection()
@@ -43,6 +65,7 @@ def index():
     conn.close()
     return render_template('index.html', posts_modulos=posts_modulos, posts_inversores=posts_inversores, consumo=consumo, posts=posts)
 
+#ROTAS PARA OS MODULOS
 #Rota para a visualização de modulos
 @app.route('/post_id_modulos')
 def post_modulo():
@@ -58,17 +81,9 @@ def edit_modulos():
     print('Rota de edição de modulos')
 
     if request.method == 'POST':
-        print('Solicitação de POST')
-
-        #O ERRO ESTÁ AQUI!
-        
         modelo = request.form['modelo']
-        print('Aceito 1')
         quantidade = request.form['quantidade']
-        print('Aceito 2')
-        potencia = request.form['potencia']
-        print('Aceito 3')
-        print('Solicitação aceita')    
+        potencia = request.form['potencia']  
 
         if not modelo:
             flash('Modelo é nessário!')
@@ -83,6 +98,96 @@ def edit_modulos():
             return redirect(url_for('index'))
 
     return render_template('edit_modulos.html', post_modulo=post_modulo)
+
+#ROTAS PARA OS INVERSORES
+#Rota para a visualização de inversores
+@app.route('/post_id_inversores')
+def post_inversor():
+    id = 1
+    post_inversor = get_post_inversores(id)
+    return render_template('post_inversores.html', post_inversor=post_inversor)
+
+#Rota para edição de inversores
+@app.route('/edit_inversores', methods=('GET', 'POST'))
+def edit_inversores():
+    id = 1
+    post_inversor = get_post_inversores(id)
+    print('Rota de edição de inversores')
+
+    if request.method == 'POST':
+        modelo = request.form['modelo']
+        quantidade = request.form['quantidade']
+        potencia = request.form['potencia'] 
+
+        if not modelo:
+            flash('Modelo é nessário!')
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE inversores SET modelo = ?, quantidade = ?, potencia = ?'
+                         ' WHERE id_inversores = ?',
+                         (modelo, quantidade, potencia, id))
+            conn.commit()
+            conn.close()
+            print('Banco atualizado')
+            return redirect(url_for('index'))
+
+    return render_template('edit_inversores.html', post_inversor=post_inversor)
+
+
+#ROTAS PARA O CONSUMO
+#Rota para a visualização do consumo
+@app.route('/post_id_consumo')
+def post_consumo():
+    id = 1
+    post_consumo = get_post_consumo(id)
+    return render_template('post_consumo.html', post_consumo=post_consumo)
+
+#Rota para edição de consumo
+@app.route('/edit_consumo', methods=('GET', 'POST'))
+def edit_consumo():
+    id = 1
+    post_consumo = get_post_consumo(id)
+    print('Rota de edição do consumo')
+
+    if request.method == 'POST':
+        escola = request.form['escola']
+        janeiro = request.form['janeiro']
+        fevereiro = request.form['fevereiro']
+        marco = request.form['marco']
+        abril = request.form['abril']
+        maio = request.form['maio']
+        junho = request.form['junho']
+        julho = request.form['julho']
+        agosto = request.form['agosto']
+        setembro = request.form['setembro']
+        outubro = request.form['outubro']
+        novembro = request.form['novembro']
+        dezembro = request.form['dezembro']
+
+        if not escola:
+            flash('Modelo é nessário!')
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE consumo_anual SET escola = ?, janeiro = ?, fevereiro = ?, marco = ?, abril = ?, maio = ?, junho = ?, julho = ?, agosto = ?, setembro = ?, outubro = ?, novembro = ?, dezembro = ?'
+                         ' WHERE id_consumo_anual = ?',
+                         (escola, janeiro, fevereiro, marco, abril, maio, junho, julho, agosto, setembro, outubro, novembro, dezembro, id))
+            conn.commit()
+            conn.close()
+            print('Banco atualizado')
+            return redirect(url_for('index'))
+
+    return render_template('edit_consumo.html', post_consumo=post_consumo)
+
+#ROTA DO RELATÓRIO
+@app.route('/google')
+def gera_relatorio():
+    return render_template('relatorio.html')
+
+#ROTA DO SOBRE
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')
+
 
 #ROTAS ABAIXO SÃO PARA AS POSTAGENS ORIGINAIS
 #Rota padrão para a visualização de postagens
