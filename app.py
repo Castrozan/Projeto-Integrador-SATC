@@ -31,6 +31,17 @@ def get_post_inversores(post_id_inversores):
     return post_inversores
 
 #Atualmente não utilizada
+#Função para pegar o ID dos arranjos
+def get_post_arranjos(post_id_arranjos):
+    conn = get_db_connection()
+    post_arranjos = conn.execute('SELECT * FROM arranjos WHERE id_arranjos = ?',
+                        (post_id_arranjos,)).fetchone()
+    conn.close()
+    if post_arranjos is None:
+        abort(404)
+    return post_arranjos
+
+#Atualmente não utilizada
 #Função para pegar o ID do consumo
 def get_post_consumo(post_id_consumo):
     conn = get_db_connection()
@@ -58,12 +69,14 @@ app = Flask(__name__)
 def index():
     conn = get_db_connection()
     posts_modulos = conn.execute('SELECT * FROM modulos').fetchall()
+    #print(type(posts_modulos))
     posts_inversores = conn.execute('SELECT * FROM inversores').fetchall()
+    posts_arranjos = conn.execute('SELECT * FROM arranjos').fetchall()
     consumo = conn.execute('SELECT * FROM consumo_anual').fetchall()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     print('Atualização do Index')
     conn.close()
-    return render_template('index.html', posts_modulos=posts_modulos, posts_inversores=posts_inversores, consumo=consumo, posts=posts)
+    return render_template('index.html', posts_modulos=posts_modulos, posts_inversores=posts_inversores, posts_arranjos=posts_arranjos, consumo=consumo, posts=posts)
 
 #ROTAS PARA OS MODULOS
 #Rota para a visualização de modulos
@@ -82,16 +95,17 @@ def edit_modulos():
 
     if request.method == 'POST':
         modelo = request.form['modelo']
-        quantidade = request.form['quantidade']
-        potencia = request.form['potencia']  
+        potencia = request.form['potencia']
+        tensao = request.form['tensao']
+        corrente = request.form['corrente']
 
         if not modelo:
             flash('Modelo é nessário!')
         else:
             conn = get_db_connection()
-            conn.execute('UPDATE modulos SET modelo = ?, quantidade = ?, potencia = ?'
+            conn.execute('UPDATE modulos SET modelo = ?, potencia = ?, tensao = ?, corrente = ?'
                          ' WHERE id_modulos = ?',
-                         (modelo, quantidade, potencia, id))
+                         (modelo, potencia, tensao, corrente, id))
             conn.commit()
             conn.close()
             print('Banco atualizado')
@@ -116,16 +130,20 @@ def edit_inversores():
 
     if request.method == 'POST':
         modelo = request.form['modelo']
-        quantidade = request.form['quantidade']
-        potencia = request.form['potencia'] 
+        potencia = request.form['potencia']
+        tensao_max = request.form['tensao_max']
+        tensao_min = request.form['tensao_min']
+        corrente = request.form['corrente']
+        mppts = request.form['mppts'] 
+        quantidade = request.form['quantidade'] 
 
         if not modelo:
             flash('Modelo é nessário!')
         else:
             conn = get_db_connection()
-            conn.execute('UPDATE inversores SET modelo = ?, quantidade = ?, potencia = ?'
+            conn.execute('UPDATE inversores SET modelo = ?, potencia = ?, tensao_max = ?, tensao_min = ?, corrente = ?, mppts = ?, quantidade = ?'
                          ' WHERE id_inversores = ?',
-                         (modelo, quantidade, potencia, id))
+                         (modelo, potencia, tensao_max, tensao_min, corrente, mppts, quantidade, id))
             conn.commit()
             conn.close()
             print('Banco atualizado')
@@ -133,6 +151,55 @@ def edit_inversores():
 
     return render_template('edit_inversores.html', post_inversor=post_inversor)
 
+#ROTAS PARA OS ARRANJOS
+#Rota para a visualização de arranjos
+@app.route('/post_id_arranjos')
+def post_arranjo():
+    id = 1
+    post_arranjo = get_post_arranjos(id)
+    return render_template('post_arranjos.html', post_arranjo=post_arranjo)
+
+#Rota para edição de arranjos
+@app.route('/edit_arranjos', methods=('GET', 'POST'))
+def edit_arranjos():
+    id = 1
+    post_arranjo = get_post_arranjos(id)
+    print('Rota de edição de arranjos')
+
+    if request.method == 'POST':
+        num_strings_mppt1 = request.form['num_strings_mppt1']
+        mod_strings_mppt1 = request.form['mod_strings_mppt1']
+        azimute_mppt1 = request.form['azimute_mppt1']
+        inclinacao_mppt1 = request.form['inclinacao_mppt1']
+
+        num_strings_mppt2 = request.form['num_strings_mppt2']
+        mod_strings_mppt2 = request.form['mod_strings_mppt2'] 
+        azimute_mppt2 = request.form['azimute_mppt2'] 
+        inclinacao_mppt2 = request.form['inclinacao_mppt2'] 
+
+        num_strings_mppt3 = request.form['num_strings_mppt3'] 
+        mod_strings_mppt3 = request.form['mod_strings_mppt3'] 
+        azimute_mppt3 = request.form['azimute_mppt3'] 
+        inclinacao_mppt3 = request.form['inclinacao_mppt3'] 
+
+        num_strings_mppt4 = request.form['num_strings_mppt4'] 
+        mod_strings_mppt4 = request.form['mod_strings_mppt4'] 
+        azimute_mppt4 = request.form['azimute_mppt4'] 
+        inclinacao_mppt4 = request.form['inclinacao_mppt4'] 
+
+        if not num_strings_mppt1:
+            flash('num_strings_mppt1 é nessário!')
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE arranjos SET num_strings_mppt1 = ?, mod_strings_mppt1 = ?, azimute_mppt1 = ?, inclinacao_mppt1 = ?, num_strings_mppt2 = ?, mod_strings_mppt2 = ?, azimute_mppt2 = ?, inclinacao_mppt2 = ?, num_strings_mppt3 = ?, mod_strings_mppt3 = ?, azimute_mppt3 = ?, inclinacao_mppt3 = ?, num_strings_mppt4 = ?, mod_strings_mppt4 = ?, azimute_mppt4 = ?, inclinacao_mppt4 = ?'
+                         ' WHERE id_arranjos = ?',
+                         (num_strings_mppt1, mod_strings_mppt1, azimute_mppt1, inclinacao_mppt1, num_strings_mppt2, mod_strings_mppt2, azimute_mppt2, inclinacao_mppt2, num_strings_mppt3, mod_strings_mppt3, azimute_mppt3, inclinacao_mppt3, num_strings_mppt4, mod_strings_mppt4, azimute_mppt4, inclinacao_mppt4, id))
+            conn.commit()
+            conn.close()
+            print('Banco atualizado')
+            return redirect(url_for('index'))
+
+    return render_template('edit_arranjos.html', post_arranjo=post_arranjo)
 
 #ROTAS PARA O CONSUMO
 #Rota para a visualização do consumo

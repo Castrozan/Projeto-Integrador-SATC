@@ -2,6 +2,10 @@
 
 {% block content %}
     <h2>{% block title %} {{ post_inversor['modelo'] }} {% endblock %}</h2>
-    <p>{{ post_inversor['quantidade'] }}</p>
     <p>{{ post_inversor['potencia'] }}</p>
+    <p>{{ post_inversor['tensao_max'] }}</p>
+    <p>{{ post_inversor['tensao_min'] }}</p>
+    <p>{{ post_inversor['corrente'] }}</p>
+    <p>{{ post_inversor['mppts'] }}</p>
+    <p>{{ post_inversor['quantidade'] }}</p>
 {% endblock %}

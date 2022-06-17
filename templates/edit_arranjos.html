@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Arranjos {% endblock %}</h1>
+
+<form method="post">
+    <h2>MPPT 1</h2>
+    <div class="form-group">
+        <label for="title">Número Máximo de Strings:</label>
+        <input type="text" name="num_strings_mppt1" placeholder="Número Máximo de Strings"
+               class="form-control"
+               value="{{ request.form['num_strings_mppt1'] or post_arranjo['num_strings_mppt1'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Módulo por Strings:</label>
+        <input type="text" name="mod_strings_mppt1" placeholder="Módulo por Strings"
+               class="form-control"
+               value="{{ request.form['mod_strings_mppt1'] or post_arranjo['mod_strings_mppt1'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Azimute</label>
+        <input type="text" name="azimute_mppt1" placeholder="Azimute"
+               class="form-control"
+               value="{{ request.form['azimute_mppt1'] or post_arranjo['azimute_mppt1'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Inclinação</label>
+        <input type="text" name="inclinacao_mppt1" placeholder="Inclinação"
+               class="form-control"
+               value="{{ request.form['inclinacao_mppt1'] or post_arranjo['inclinacao_mppt1'] }}">
+        </input>
+    </div>
+
+    <h2>MPPT 2</h2>
+    <div class="form-group">
+        <label for="title">Número Máximo de Strings:</label>
+        <input type="text" name="num_strings_mppt2" placeholder="Número Máximo de Strings"
+               class="form-control"
+               value="{{ request.form['num_strings_mppt2'] or post_arranjo['num_strings_mppt2'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Módulo por Strings:</label>
+        <input type="text" name="mod_strings_mppt2" placeholder="Módulo por Strings"
+               class="form-control"
+               value="{{ request.form['mod_strings_mppt2'] or post_arranjo['mod_strings_mppt2'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Azimute</label>
+        <input type="text" name="azimute_mppt2" placeholder="Azimute"
+               class="form-control"
+               value="{{ request.form['azimute_mppt2'] or post_arranjo['azimute_mppt2'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Inclinação</label>
+        <input type="text" name="inclinacao_mppt2" placeholder="Inclinação"
+               class="form-control"
+               value="{{ request.form['inclinacao_mppt2'] or post_arranjo['inclinacao_mppt2'] }}">
+        </input>
+    </div>
+
+    <h2>MPPT 3</h2>
+    <div class="form-group">
+        <label for="title">Número Máximo de Strings:</label>
+        <input type="text" name="num_strings_mppt3" placeholder="Número Máximo de Strings"
+               class="form-control"
+               value="{{ request.form['num_strings_mppt3'] or post_arranjo['num_strings_mppt3'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Módulo por Strings:</label>
+        <input type="text" name="mod_strings_mppt3" placeholder="Módulo por Strings"
+               class="form-control"
+               value="{{ request.form['mod_strings_mppt3'] or post_arranjo['mod_strings_mppt3'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Azimute</label>
+        <input type="text" name="azimute_mppt3" placeholder="Azimute"
+               class="form-control"
+               value="{{ request.form['azimute_mppt3'] or post_arranjo['azimute_mppt3'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Inclinação</label>
+        <input type="text" name="inclinacao_mppt3" placeholder="Inclinação"
+               class="form-control"
+               value="{{ request.form['inclinacao_mppt3'] or post_arranjo['inclinacao_mppt3'] }}">
+        </input>
+    </div>
+
+    <h2>MPPT 4</h2>
+    <div class="form-group">
+        <label for="title">Número Máximo de Strings:</label>
+        <input type="text" name="num_strings_mppt4" placeholder="Número Máximo de Strings"
+               class="form-control"
+               value="{{ request.form['num_strings_mppt4'] or post_arranjo['num_strings_mppt4'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Módulo por Strings:</label>
+        <input type="text" name="mod_strings_mppt4" placeholder="Módulo por Strings"
+               class="form-control"
+               value="{{ request.form['mod_strings_mppt4'] or post_arranjo['mod_strings_mppt4'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Azimute</label>
+        <input type="text" name="azimute_mppt4" placeholder="Azimute"
+               class="form-control"
+               value="{{ request.form['azimute_mppt4'] or post_arranjo['azimute_mppt4'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Inclinação</label>
+        <input type="text" name="inclinacao_mppt4" placeholder="Inclinação"
+               class="form-control"
+               value="{{ request.form['inclinacao_mppt4'] or post_arranjo['inclinacao_mppt4'] }}">
+        </input>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Alterar</button>
+    </div>
+</form>
+<hr>
+{% endblock %}

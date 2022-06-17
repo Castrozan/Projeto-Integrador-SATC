@@ -8,12 +8,16 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO modulos (modelo, quantidade, potencia) VALUES (?, ?, ?)",
-            ('SunPower SPR-400E-WHT-D', '48', '400W')
+cur.execute("INSERT INTO modulos (modelo, potencia, tensao, corrente) VALUES (?, ?, ?, ?)",
+            ('SunPower SPR-400E-WHT-D', '400', '85.3', '5.9')
             )
 
-cur.execute("INSERT INTO inversores (modelo, quantidade, potencia) VALUES (?, ?, ?)",
-            ('SMA America SB3800TL-US-22', '4', '3800W')
+cur.execute("INSERT INTO inversores (modelo, potencia, tensao_max, tensao_min, corrente, mppts, quantidade) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            ('SMA America SB3800TL-US-22', '10000', '480', '100', '28.7897', '3', '2')
+            )
+
+cur.execute("INSERT INTO arranjos (num_strings_mppt1, mod_strings_mppt1, azimute_mppt1, inclinacao_mppt1, num_strings_mppt2, mod_strings_mppt2, azimute_mppt2, inclinacao_mppt2, num_strings_mppt3, mod_strings_mppt3, azimute_mppt3, inclinacao_mppt3, num_strings_mppt4, mod_strings_mppt4, azimute_mppt4, inclinacao_mppt4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            ('2', '4', '0', '0', '2', '4', '0', '0','2', '4', '0', '0','0', '0', '0', '0')
             )
 
 cur.execute("INSERT INTO consumo_anual (escola, janeiro, fevereiro, marco, abril, maio, junho, julho, agosto, setembro, outubro, novembro, dezembro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",

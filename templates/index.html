@@ -8,8 +8,9 @@
         <a href="{{ url_for('post_modulo') }}">
             <h2>Móduto atual: {{ post['modelo'] }}</h2>
         </a>
-        <span class="badge badge-primary">Quantidade: {{ post['quantidade'] }}</span>
         <span class="badge badge-primary">Potência: {{ post['potencia'] }}</span>
+        <span class="badge badge-primary">Tensão: {{ post['tensao'] }}</span>
+        <span class="badge badge-primary">Corrente: {{ post['corrente'] }}</span>
         <a href="{{ url_for('edit_modulos') }}">
             <span class="badge badge-warning">Edit</span>
         </a>
@@ -19,9 +20,42 @@
         <a href="{{ url_for('post_inversor') }}">
             <h2>Inversor atual: {{ post['modelo'] }}</h2>
         </a>
-        <span class="badge badge-primary">Quantidade: {{ post['quantidade'] }}</span>
         <span class="badge badge-primary">Potência: {{ post['potencia'] }}</span>
+        <span class="badge badge-primary">Tensão Máxima: {{ post['tensao_max'] }}</span>
+        <span class="badge badge-primary">Tensão Mínima: {{ post['tensao_min'] }}</span>
+        <span class="badge badge-primary">Corrente: {{ post['corrente'] }}</span>
+        <span class="badge badge-primary">MPPTs: {{ post['mppts'] }}</span>
+        <span class="badge badge-primary">Quantidade: {{ post['quantidade'] }}</span>
         <a href="{{ url_for('edit_inversores') }}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+    {% endfor %}
+
+    {% for post in posts_arranjos %}
+        <a href="{{ url_for('post_arranjo') }}">
+            <h2>Arranjos</h2>
+        </a>
+        <h10>MPPT 1:</h10>
+        <span class="badge badge-primary">Número Máximo de Strings: {{ post['num_strings_mppt1'] }}</span>
+        <span class="badge badge-primary">Módulo por Strings: {{ post['mod_strings_mppt1'] }}</span>
+        <span class="badge badge-primary">Azimute: {{ post['azimute_mppt1'] }}</span>
+        <span class="badge badge-primary">Inclinação: {{ post['inclinacao_mppt1'] }}</span>
+        <h10>MPPT 2:</h10>
+        <span class="badge badge-primary">Número Máximo de Strings: {{ post['num_strings_mppt2'] }}</span>
+        <span class="badge badge-primary">Módulo por Strings: {{ post['mod_strings_mppt2'] }}</span>
+        <span class="badge badge-primary">Azimute: {{ post['azimute_mppt2'] }}</span>
+        <span class="badge badge-primary">Inclinação: {{ post['inclinacao_mppt2'] }}</span>
+        <h10>MPPT 3:</h10>
+        <span class="badge badge-primary">Número Máximo de Strings: {{ post['num_strings_mppt3'] }}</span>
+        <span class="badge badge-primary">Módulo por Strings: {{ post['mod_strings_mppt3'] }}</span>
+        <span class="badge badge-primary">Azimute: {{ post['azimute_mppt3'] }}</span>
+        <span class="badge badge-primary">Inclinação: {{ post['inclinacao_mppt3'] }}</span>
+        <h10>MPPT 4:</h10>
+        <span class="badge badge-primary">Número Máximo de Strings: {{ post['num_strings_mppt4'] }}</span>
+        <span class="badge badge-primary">Módulo por Strings: {{ post['mod_strings_mppt4'] }}</span>
+        <span class="badge badge-primary">Azimute: {{ post['azimute_mppt4'] }}</span>
+        <span class="badge badge-primary">Inclinação: {{ post['inclinacao_mppt4'] }}</span>
+        <a href="{{ url_for('edit_arranjos') }}">
             <span class="badge badge-warning">Edit</span>
         </a>
     {% endfor %}
@@ -57,6 +91,7 @@
             <span class="badge badge-warning">Edit</span>
         </a>
     {% endfor %}-->
+
     <a href="{{ url_for('gera_relatorio') }}">
         <h1></h1>
         <h1></h1>

@@ -11,13 +11,7 @@
                value="{{ request.form['modelo'] or post_inversor['modelo'] }}">
         </input>
     </div>
-    <div class="form-group">
-        <label for="title">Quantidade</label>
-        <input type="text" name="quantidade" placeholder="Quantidade"
-               class="form-control"
-               value="{{ request.form['quantidade'] or post_inversor['quantidade'] }}">
-        </input>
-    </div>
+
     <div class="form-group">
         <label for="title">Potência</label>
         <input type="text" name="potencia" placeholder="Potência"
@@ -25,6 +19,47 @@
                value="{{ request.form['potencia'] or post_inversor['potencia'] }}">
         </input>
     </div>
+
+    <div class="form-group">
+        <label for="title">Tensão Máxima</label>
+        <input type="text" name="tensao_max" placeholder="Tensão Máxima"
+               class="form-control"
+               value="{{ request.form['tensao_max'] or post_inversor['tensao_max'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Tensão Mínima</label>
+        <input type="text" name="tensao_min" placeholder="Tensão Mínima"
+               class="form-control"
+               value="{{ request.form['tensao_min'] or post_inversor['tensao_min'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Corrente</label>
+        <input type="text" name="corrente" placeholder="Corrente"
+               class="form-control"
+               value="{{ request.form['corrente'] or post_inversor['corrente'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">MPPTs</label>
+        <input type="text" name="mppts" placeholder="MPPTs"
+               class="form-control"
+               value="{{ request.form['mppts'] or post_inversor['mppts'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Quantidade</label>
+        <input type="text" name="quantidade" placeholder="Quantidade"
+               class="form-control"
+               value="{{ request.form['quantidade'] or post_inversor['quantidade'] }}">
+        </input>
+    </div>
+
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Alterar</button>
     </div>

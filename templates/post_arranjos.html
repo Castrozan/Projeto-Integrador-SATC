@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} Arranjos {% endblock %}</h2><br>
+
+    <h5>MPPT 1</h5>
+    <p>{{ post_arranjo['num_strings_mppt1'] }}</p>
+    <p>{{ post_arranjo['mod_strings_mppt1'] }}</p>
+    <p>{{ post_arranjo['azimute_mppt1'] }}</p>
+    <p>{{ post_arranjo['inclinacao_mppt1'] }}</p>
+
+    <h5>MPPT 2</h5>
+    <p>{{ post_arranjo['num_strings_mppt2'] }}</p>
+    <p>{{ post_arranjo['mod_strings_mppt2'] }}</p>
+    <p>{{ post_arranjo['azimute_mppt2'] }}</p>
+    <p>{{ post_arranjo['inclinacao_mppt2'] }}</p>
+
+    <h5>MPPT 3</h5>
+    <p>{{ post_arranjo['num_strings_mppt3'] }}</p>
+    <p>{{ post_arranjo['mod_strings_mppt3'] }}</p>
+    <p>{{ post_arranjo['azimute_mppt3'] }}</p>
+    <p>{{ post_arranjo['inclinacao_mppt3'] }}</p>
+
+    <h5>MPPT 4</h5>
+    <p>{{ post_arranjo['num_strings_mppt4'] }}</p>
+    <p>{{ post_arranjo['mod_strings_mppt4'] }}</p>
+    <p>{{ post_arranjo['azimute_mppt4'] }}</p>
+    <p>{{ post_arranjo['inclinacao_mppt4'] }}</p>
+{% endblock %}
