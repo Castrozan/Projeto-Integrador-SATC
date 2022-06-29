@@ -35,6 +35,7 @@ CREATE TABLE inversores (
 CREATE TABLE arranjos (
     id_arranjos INTEGER PRIMARY KEY AUTOINCREMENT,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    numero_total_modulos TEXT NOT NULL,
     num_strings_mppt1 TEXT NOT NULL,
     mod_strings_mppt1 TEXT NOT NULL,
     azimute_mppt1 TEXT NOT NULL,

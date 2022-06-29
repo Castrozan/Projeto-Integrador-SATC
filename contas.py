@@ -1,24 +1,26 @@
 # Entradas
 
 #Dados gerais
-consumo_total_energia = 23332 #consumir do banco
 irradiacao_local = 4.38
 temperatura_minima_ambiente = 0.00
 constante_gstc = 1.00
 taxa_desempenho_sistema = 0.80
 
-# Dados dos módulos
+# Dados dos módulos OK
 potencia_maxima_modulo = 400 #consumir do banco modulos
 tensao_modulo_ca = 85.3 #consumir do banco modulos
 corrente_cc = 5.9 #consumir do banco modulos
 
-#Dados do inversor
+#Dados do inversor 
 potencia_maxima_inversor = 10000 #consumir do banco inversores
 tensao_maxima_mppt = 480 #consumir do banco inversores
 tensao_minima_mppt = 100 #consumir do banco inversores
 corrente_maxima_mppt = 28.7897 #consumir do banco inversores
 numero_mppt = 3 #consumir do banco inversores
 quantidade_inversores = 2 #consumir do banco inversores
+
+# Escolas
+consumo_total_energia = 23332 #consumir do banco # Somar tudo na função do relatório
 
 # Dados MPPT
 capacidade_cc = 19200
