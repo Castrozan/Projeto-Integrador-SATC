@@ -168,6 +168,7 @@ def edit_arranjos():
     print('Rota de edição de arranjos')
 
     if request.method == 'POST':
+        numero_total_modulos = request.form['numero_total_modulos']
         num_strings_mppt1 = request.form['num_strings_mppt1']
         mod_strings_mppt1 = request.form['mod_strings_mppt1']
         azimute_mppt1 = request.form['azimute_mppt1']
@@ -192,9 +193,9 @@ def edit_arranjos():
             flash('num_strings_mppt1 é nessário!')
         else:
             conn = get_db_connection()
-            conn.execute('UPDATE arranjos SET num_strings_mppt1 = ?, mod_strings_mppt1 = ?, azimute_mppt1 = ?, inclinacao_mppt1 = ?, num_strings_mppt2 = ?, mod_strings_mppt2 = ?, azimute_mppt2 = ?, inclinacao_mppt2 = ?, num_strings_mppt3 = ?, mod_strings_mppt3 = ?, azimute_mppt3 = ?, inclinacao_mppt3 = ?, num_strings_mppt4 = ?, mod_strings_mppt4 = ?, azimute_mppt4 = ?, inclinacao_mppt4 = ?'
+            conn.execute('UPDATE arranjos SET numero_total_modulos = ?, num_strings_mppt1 = ?, mod_strings_mppt1 = ?, azimute_mppt1 = ?, inclinacao_mppt1 = ?, num_strings_mppt2 = ?, mod_strings_mppt2 = ?, azimute_mppt2 = ?, inclinacao_mppt2 = ?, num_strings_mppt3 = ?, mod_strings_mppt3 = ?, azimute_mppt3 = ?, inclinacao_mppt3 = ?, num_strings_mppt4 = ?, mod_strings_mppt4 = ?, azimute_mppt4 = ?, inclinacao_mppt4 = ?'
                          ' WHERE id_arranjos = ?',
-                         (num_strings_mppt1, mod_strings_mppt1, azimute_mppt1, inclinacao_mppt1, num_strings_mppt2, mod_strings_mppt2, azimute_mppt2, inclinacao_mppt2, num_strings_mppt3, mod_strings_mppt3, azimute_mppt3, inclinacao_mppt3, num_strings_mppt4, mod_strings_mppt4, azimute_mppt4, inclinacao_mppt4, id))
+                         (numero_total_modulos, num_strings_mppt1, mod_strings_mppt1, azimute_mppt1, inclinacao_mppt1, num_strings_mppt2, mod_strings_mppt2, azimute_mppt2, inclinacao_mppt2, num_strings_mppt3, mod_strings_mppt3, azimute_mppt3, inclinacao_mppt3, num_strings_mppt4, mod_strings_mppt4, azimute_mppt4, inclinacao_mppt4, id))
             conn.commit()
             conn.close()
             print('Banco atualizado')
@@ -441,6 +442,7 @@ def gera_relatorio():
     print('azimute_mppt4',azimute_mppt4)
     print('inclinacao_mppt4',inclinacao_mppt4)
 
+    # SAÍDAS RELATÓRIO
     # GERAÇÃO FOTOVOLTAICA
     print('GERAÇÃO FOTOVOLTAICA')
     if consumo_total_energia/12 > (numero_total_modulos*potencia_maxima_modulo*30*irradiacao_local*taxa_desempenho_sistema/(constante_gstc*1000)):
@@ -641,7 +643,7 @@ def gera_relatorio():
 
     return render_template('relatorio.html')
     
-    
+
 #ROTAS ABAIXO SÃO PARA AS POSTAGENS ORIGINAIS
 #Rota padrão para a visualização de postagens
 @app.route('/<int:post_id>')

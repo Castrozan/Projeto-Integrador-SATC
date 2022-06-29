@@ -4,6 +4,13 @@
 <h1>{% block title %} Arranjos {% endblock %}</h1>
 
 <form method="post">
+    <div class="form-group">
+        <label for="title">Número Total de Modulos:</label>
+        <input type="text" name="numero_total_modulos" placeholder="Número Total de Modulos"
+               class="form-control"
+               value="{{ request.form['numero_total_modulos'] or post_arranjo['numero_total_modulos'] }}">
+        </input>
+    </div>
     <h2>MPPT 1</h2>
     <div class="form-group">
         <label for="title">Número Máximo de Strings:</label>
