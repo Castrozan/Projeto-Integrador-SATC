@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} Relatório {% endblock %}</h2>
+    <p>{{ post_relatorio['notas_geracao'] }}</p>
+    <p>{{ post_relatorio['min_geracao'] }}</p>
+    <p>{{ post_relatorio['presente_geracao'] }}</p>
+    <p>{{ post_relatorio['max_geracao'] }}</p>
+    <p>{{ post_relatorio['notas_inversor'] }}</p>
+    <p>{{ post_relatorio['min_inversor'] }}</p>
+    <p>{{ post_relatorio['presente_inversor'] }}</p>
+    <p>{{ post_relatorio['max_inversor'] }}</p>
+    <p>{{ post_relatorio['notas_mppts'] }}</p>
+    <p>{{ post_relatorio['notas_tensao_mppt1'] }}</p>
+    <p>{{ post_relatorio['min_mppt1'] }}</p>
+    <p>{{ post_relatorio['presente_mppt1'] }}</p>
+    <p>{{ post_relatorio['max_mppt1'] }}</p>
+    <p>{{ post_relatorio['notas_corrente_mppt1'] }}</p>
+    <p>{{ post_relatorio['notas_tensao_mppt2'] }}</p>
+    <p>{{ post_relatorio['min_mppt2'] }}</p>
+    <p>{{ post_relatorio['presente_mppt2'] }}</p>
+    <p>{{ post_relatorio['max_mppt2'] }}</p>
+    <p>{{ post_relatorio['notas_corrente_mppt2'] }}</p>
+    <p>{{ post_relatorio['notas_tensao_mppt3'] }}</p>
+    <p>{{ post_relatorio['min_mppt3'] }}</p>
+    <p>{{ post_relatorio['presente_mppt3'] }}</p>
+    <p>{{ post_relatorio['max_mppt3'] }}</p>
+    <p>{{ post_relatorio['notas_corrente_mppt3'] }}</p>
+    <p>{{ post_relatorio['notas_tensao_mppt4'] }}</p>
+    <p>{{ post_relatorio['min_mppt4'] }}</p>
+    <p>{{ post_relatorio['presente_mppt4'] }}</p>
+    <p>{{ post_relatorio['max_mppt4'] }}</p>
+    <p>{{ post_relatorio['notas_corrente_mppt4'] }}</p>
+{% endblock %}

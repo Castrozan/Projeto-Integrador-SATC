@@ -1,34 +1,127 @@
-{% extends 'base.html' %}
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-{% block content %}
-    <h2>{% block title %} Relatório {% endblock %}</h2>
-    <p>{{ post_relatorio['notas_geracao'] }}</p>
-    <p>{{ post_relatorio['min_geracao'] }}</p>
-    <p>{{ post_relatorio['presente_geracao'] }}</p>
-    <p>{{ post_relatorio['max_geracao'] }}</p>
-    <p>{{ post_relatorio['notas_inversor'] }}</p>
-    <p>{{ post_relatorio['min_inversor'] }}</p>
-    <p>{{ post_relatorio['presente_inversor'] }}</p>
-    <p>{{ post_relatorio['max_inversor'] }}</p>
-    <p>{{ post_relatorio['notas_mppts'] }}</p>
-    <p>{{ post_relatorio['notas_tensao_mppt1'] }}</p>
-    <p>{{ post_relatorio['min_mppt1'] }}</p>
-    <p>{{ post_relatorio['presente_mppt1'] }}</p>
-    <p>{{ post_relatorio['max_mppt1'] }}</p>
-    <p>{{ post_relatorio['notas_corrente_mppt1'] }}</p>
-    <p>{{ post_relatorio['notas_tensao_mppt2'] }}</p>
-    <p>{{ post_relatorio['min_mppt2'] }}</p>
-    <p>{{ post_relatorio['presente_mppt2'] }}</p>
-    <p>{{ post_relatorio['max_mppt2'] }}</p>
-    <p>{{ post_relatorio['notas_corrente_mppt2'] }}</p>
-    <p>{{ post_relatorio['notas_tensao_mppt3'] }}</p>
-    <p>{{ post_relatorio['min_mppt3'] }}</p>
-    <p>{{ post_relatorio['presente_mppt3'] }}</p>
-    <p>{{ post_relatorio['max_mppt3'] }}</p>
-    <p>{{ post_relatorio['notas_corrente_mppt3'] }}</p>
-    <p>{{ post_relatorio['notas_tensao_mppt4'] }}</p>
-    <p>{{ post_relatorio['min_mppt4'] }}</p>
-    <p>{{ post_relatorio['presente_mppt4'] }}</p>
-    <p>{{ post_relatorio['max_mppt4'] }}</p>
-    <p>{{ post_relatorio['notas_corrente_mppt4'] }}</p>
-{% endblock %}
+<body>
+    <table style="height: 307px; width: 1042px; border-style: solid; margin-left: 400px; margin-top: 100px; text-align: center;">
+        <tbody>
+            <tr style="height: 43px; border-style: solid;">
+                <td style="width: 1032px; height: 43px; border-style: solid; " colspan="12">
+                    VALIDAÇÃO DO SISTEMA FOTOVOLTAICO</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 172.014px; height: 43px;border-style: solid; " colspan="3">CRITÉRIOS
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid;" colspan="6">NOTAS
+
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">MIN.
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">PRESENTE</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">MÁX.
+                </td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 172.014px; height: 43px;border-style: solid; " colspan="3">GERAÇÃO FOTOVOLTAICA
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_geracao'] }}
+
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['min_geracao'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['presente_geracao'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['max_geracao'] }}</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 172.014px; height: 43px;border-style: solid; " colspan="3">POTÊNCIA DO INVERSOR
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_inversor'] }}
+
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['min_inversor'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['presente_inversor'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['max_inversor'] }}</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="3">VALIDAÇÂO DA QUANTIDADE DE MPPTs
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_mppts'] }}
+
+                    <td style="width: 86px; height: 43.4445px;border-style: solid; " colspan="3">-</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 86px; height: 43px;border-style: solid; " rowspan="2">1 MPPT</td>
+                <td style="width: 86.0139px; height: 43px;border-style: solid; " colspan="2">TENSÃO DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_tensao_mppt1'] }}
+
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['min_mppt1'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['presente_mppt1'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['max_mppt1'] }}</td>
+            </tr>
+            <tr style="height: 43.4445px;border-style: solid;">
+                <td style="width: 86.0139px; height: 43.4445px;border-style: solid; " colspan="2">CORRENTE DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 43.4445px;border-style: solid; " colspan="6">{{ post_relatorio['notas_corrente_mppt1'] }}
+
+                </td>
+                <td style="width: 86px; height: 43.4445px;border-style: solid; " colspan="3">-</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 86px; height: 43px;border-style: solid; " rowspan="2">2 MPPT
+                </td>
+                <td style="width: 86.0139px; height: 43px;border-style: solid; " colspan="2">TENSÃO DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_tensao_mppt2'] }}
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['min_mppt2'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['presente_mppt2'] }}</td>
+                <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['max_mppt2'] }}</td>
+            </tr>
+            <tr style="height: 43px;border-style: solid;">
+                <td style="width: 86.0139px; height: 43px;border-style: solid; " colspan="2">CORRENTE DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid; " colspan="6">{{ post_relatorio['notas_corrente_mppt2'] }}
+
+                </td>
+                <td style="width: 86px; height: 43px;border-style: solid;" colspan="3">-</td>
+            </tr>
+            <tr style="height: 50px;border-style: solid;">
+                <td style="width: 86px; height: 50px;border-style: solid;" rowspan="2">3 MPPT
+
+                </td>
+                <td style="width: 86.0139px; height: 50px;border-style: solid;" colspan="2">TENSÃO DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="6">{{ post_relatorio['notas_tensao_mppt3'] }}
+                    <td style="width: 86px; height: 50px;border-style: solid;">{{ post_relatorio['min_mppt3'] }}</td>
+                    <td style="width: 86px; height: 50px;border-style: solid;">{{ post_relatorio['presente_mppt3'] }}</td>
+                    <td style="width: 86px; height: 43px;border-style: solid; ">{{ post_relatorio['max_mppt3'] }}</td>
+            </tr>
+            <tr style="height: 50px;border-style: solid;">
+                <td style="width: 86.0139px; height: 50px;border-style: solid;" colspan="2">CORRENTE DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="6">{{ post_relatorio['notas_corrente_mppt3'] }}</td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="3">-</td>
+            </tr>
+            <tr style="height: 50px;">
+                <td style="width: 86.0139px; height: 50px;border-style: solid;" rowspan="2">4 MPPT</td>
+                <td style="width: 86.0139px; height: 50px;border-style: solid;" colspan="2">TENSÃO DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="6">{{ post_relatorio['notas_tensao_mppt4'] }}</td>
+                <td style="width: 86px; height: 50px;border-style: solid;">{{ post_relatorio['min_mppt4'] }}</td>
+                <td style="width: 86px; height: 50px;border-style: solid;">{{ post_relatorio['presente_mppt4'] }}</td>
+                <td style="width: 86px; height: 50px;border-style: solid;">{{ post_relatorio['max_mppt4'] }}</td>
+            </tr>
+            <tr style="height: 50px;">
+                <td style="width: 86.0139px; height: 50px;border-style: solid;" colspan="2">CORRENTE DE OPERAÇÃO NO MPPTs
+                </td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="6">{{ post_relatorio['notas_corrente_mppt4'] }}</td>
+                <td style="width: 86px; height: 50px;border-style: solid;" colspan="3">-</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- DivTable.com -->
+    <!-- DivTable.com -->
+
+</body>
