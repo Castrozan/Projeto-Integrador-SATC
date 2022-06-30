@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>{% block title %} {{ post_modulo['modelo'] }} {% endblock %}</h2>
-    <p>{{ post_modulo['potencia'] }}</p>
-    <p>{{ post_modulo['tensao'] }}</p>
-    <p>{{ post_modulo['corrente'] }}</p>
+    <p>Potência Máxima do Módulo - Pmp (W): {{ post_modulo['potencia'] }}</p>
+    <p>Tensão do Módulo em Circuito Aberto - Voc (V): {{ post_modulo['tensao'] }}</p>
+    <p>Corrente de Curto-Circuito - Ish (A): {{ post_modulo['corrente'] }}</p>
 {% endblock %}

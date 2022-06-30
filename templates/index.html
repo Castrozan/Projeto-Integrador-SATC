@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Bem Vindo ao PIWEB!! {% endblock %}</h1>
-    <h6>Edite o modulo, inversor desejado e o consumo da edifição</h6>
+    <h1>{% block title %} Bem Vindo ao PIWEB! {% endblock %}</h1>
+    <h6>Edite as informações necessárias e clique em Gerar Relatório</h6>
     
     {% for post in posts_modulos %}
         <a href="{{ url_for('post_modulo') }}">
@@ -96,6 +96,6 @@
     <a href="{{ url_for('gera_relatorio') }}">
         <h1></h1>
         <h1></h1>
-        <h1>Gerar relatório</h1>
+        <h1>Gerar Relatório</h1>
     </a>
 {% endblock %}
