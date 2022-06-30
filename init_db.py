@@ -24,6 +24,10 @@ cur.execute("INSERT INTO consumo_anual (escola, janeiro, fevereiro, marco, abril
             ('E.M.E.I.E.F Éricco Nonnemacher', '100', '100', '100', '100', '100', '100', '100', '100', '100', '100', '100', '100')
             )
 
+cur.execute("INSERT INTO relatorios (notas_geracao, min_geracao, presente_geracao, max_geracao, notas_inversor, min_inversor, presente_inversor, max_inversor, notas_mppts, notas_tensao_mppt1, min_mppt1, presente_mppt1, max_mppt1, notas_corrente_mppt1, notas_tensao_mppt2, min_mppt2, presente_mppt2, max_mppt2, notas_corrente_mppt2, notas_tensao_mppt3, min_mppt3, presente_mppt3, max_mppt3, notas_corrente_mppt3, notas_tensao_mppt4, min_mppt4, presente_mppt4, max_mppt4, notas_corrente_mppt4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            ('dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado', 'dado')
+            )
+
 cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
             ('First Post', 'Content for the first post')
             )

@@ -70,3 +70,36 @@ CREATE TABLE consumo_anual (
     novembro TEXT NOT NULL,
     dezembro TEXT NOT NULL
 );
+
+CREATE TABLE relatorios (
+    id_relatorios INTEGER PRIMARY KEY AUTOINCREMENT,
+    notas_geracao TEXT NOT NULL,
+    min_geracao TEXT NOT NULL,
+    presente_geracao TEXT NOT NULL,
+    max_geracao TEXT NOT NULL,
+    notas_inversor TEXT NOT NULL,
+    min_inversor TEXT NOT NULL,
+    presente_inversor TEXT NOT NULL,
+    max_inversor TEXT NOT NULL,
+    notas_mppts TEXT NOT NULL,
+    notas_tensao_mppt1 TEXT NOT NULL,
+    min_mppt1 TEXT NOT NULL,
+    presente_mppt1 TEXT NOT NULL,
+    max_mppt1 TEXT NOT NULL,
+    notas_corrente_mppt1 TEXT NOT NULL,
+    notas_tensao_mppt2 TEXT NOT NULL,
+    min_mppt2 TEXT NOT NULL,
+    presente_mppt2 TEXT NOT NULL,
+    max_mppt2 TEXT NOT NULL,
+    notas_corrente_mppt2 TEXT NOT NULL,
+    notas_tensao_mppt3 TEXT NOT NULL,
+    min_mppt3 TEXT NOT NULL,
+    presente_mppt3 TEXT NOT NULL,
+    max_mppt3 TEXT NOT NULL,
+    notas_corrente_mppt3 TEXT NOT NULL,
+    notas_tensao_mppt4 TEXT NOT NULL,
+    min_mppt4 TEXT NOT NULL,
+    presente_mppt4 TEXT NOT NULL,
+    max_mppt4 TEXT NOT NULL,
+    notas_corrente_mppt4 TEXT NOT NULL
+);

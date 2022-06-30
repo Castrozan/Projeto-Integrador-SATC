@@ -8,8 +8,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-#Atualmente não utilizada
-#Função para pegar o ID dos Modulos
+#Função para pegar o post Modulos
 def get_post_modulos(post_id_modulos):
     conn = get_db_connection()
     post_modulos = conn.execute('SELECT * FROM modulos WHERE id_modulos = ?',
@@ -20,8 +19,7 @@ def get_post_modulos(post_id_modulos):
         abort(404)
     return post_modulos
 
-#Atualmente não utilizada
-#Função para pegar o ID dos inversores
+#Função para pegar o post inversores
 def get_post_inversores(post_id_inversores):
     conn = get_db_connection()
     post_inversores = conn.execute('SELECT * FROM inversores WHERE id_inversores = ?',
@@ -31,8 +29,7 @@ def get_post_inversores(post_id_inversores):
         abort(404)
     return post_inversores
 
-#Atualmente não utilizada
-#Função para pegar o ID dos arranjos
+#Função para pegar post arranjos
 def get_post_arranjos(post_id_arranjos):
     conn = get_db_connection()
     post_arranjos = conn.execute('SELECT * FROM arranjos WHERE id_arranjos = ?',
@@ -42,8 +39,8 @@ def get_post_arranjos(post_id_arranjos):
         abort(404)
     return post_arranjos
 
-#Atualmente não utilizada
-#Função para pegar o ID do consumo
+
+#Função para pegar post consumo
 def get_post_consumo(post_id_consumo):
     conn = get_db_connection()
     post_consumo = conn.execute('SELECT * FROM consumo_anual WHERE id_consumo_anual = ?',
@@ -53,7 +50,18 @@ def get_post_consumo(post_id_consumo):
         abort(404)
     return post_consumo
 
-#Função padrão para pegar o ID das postagens
+#Função para pegar o post relatorios
+def get_post_relatorios(post_id_relatorio):
+    conn = get_db_connection()
+    post_relatorio = conn.execute('SELECT * FROM relatorios WHERE id_relatorios = ?',
+                        (post_id_relatorio,)).fetchone()
+    conn.close()
+    if post_relatorio is None:
+        print('não tem nada')
+        abort(404)
+    return post_relatorio
+
+#Função padrão para pegar as postagens
 def get_post(post_id):
     conn = get_db_connection()
     post = conn.execute('SELECT * FROM posts WHERE id = ?',
@@ -255,6 +263,7 @@ def sobre():
 #ROTA DO RELATÓRIO
 @app.route('/relatorio')
 def gera_relatorio():
+    id = 1
 
     #Dados gerais
     irradiacao_local = 4.38
@@ -641,7 +650,16 @@ def gera_relatorio():
 
     print('notas_corrente_mppt4 ',notas_corrente_mppt4 )
 
-    return render_template('relatorio.html')
+    conn = get_db_connection()
+    conn.execute('UPDATE relatorios SET notas_geracao = ?, min_geracao = ?, presente_geracao = ?, max_geracao = ?, notas_inversor = ?, min_inversor = ?, presente_inversor = ?, max_inversor = ?, notas_mppts = ?, notas_tensao_mppt1 = ?, min_mppt1 = ?, presente_mppt1 = ?, max_mppt1 = ?, notas_corrente_mppt1 = ?, notas_tensao_mppt2 = ?, min_mppt2 = ?, presente_mppt2 = ?, max_mppt2 = ?, notas_corrente_mppt2 = ?, notas_tensao_mppt3 = ?, min_mppt3 = ?, presente_mppt3 = ?, max_mppt3 = ?, notas_corrente_mppt3 = ?, notas_tensao_mppt4 = ?, min_mppt4 = ?, presente_mppt4 = ?, max_mppt4 = ?, notas_corrente_mppt4 = ?'
+                    ' WHERE id_relatorios = ?',
+                    (notas_geracao, min_geracao, presente_geracao, max_geracao, notas_inversor, min_inversor, presente_inversor, max_inversor, notas_mppts, notas_tensao_mppt1, min_mppt1, presente_mppt1, max_mppt1, notas_corrente_mppt1, notas_tensao_mppt2, min_mppt2, presente_mppt2, max_mppt2, notas_corrente_mppt2, notas_tensao_mppt3, min_mppt3, presente_mppt3, max_mppt3, notas_corrente_mppt3, notas_tensao_mppt4, min_mppt4, presente_mppt4, max_mppt4, notas_corrente_mppt4, id))
+    conn.commit()
+    conn.close()
+
+    post_relatorio = get_post_relatorios(id)
+
+    return render_template('relatorio.html', post_relatorio=post_relatorio)
     
 
 #ROTAS ABAIXO SÃO PARA AS POSTAGENS ORIGINAIS
